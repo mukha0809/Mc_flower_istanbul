@@ -1,0 +1,15 @@
+.dark {
+    background: #1e1e1e;
+    color: white;
+}
+
+.card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all .8s ease;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
