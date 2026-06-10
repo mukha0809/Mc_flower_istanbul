@@ -1,1 +1,0 @@
-# Mc_flower_istanbul
