@@ -1,15 +1,158 @@
-.dark {
-    background: #1e1e1e;
-    color: white;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter;
 }
 
-.card {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all .8s ease;
+body{
+background:#faf7f5;
+color:#1a1a1a;
+transition:.4s;
 }
 
-.show {
-    opacity: 1;
-    transform: translateY(0);
+/* NAVBAR */
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:white;
+position:fixed;
+width:100%;
+top:0;
+box-shadow:0 5px 20px rgba(0,0,0,0.05);
+}
+
+.logo{
+font-weight:700;
+font-family:Playfair Display;
+}
+
+nav a{
+margin:0 10px;
+text-decoration:none;
+color:#333;
+}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:0 20px;
+background:linear-gradient(135deg,#fff,#f5e6e0);
+}
+
+.hero h1{
+font-size:50px;
+font-family:Playfair Display;
+}
+
+.hero-text{
+margin-top:15px;
+color:#555;
+}
+
+/* BUTTON */
+.btn{
+display:inline-block;
+margin-top:20px;
+padding:12px 25px;
+background:#d9a7b0;
+color:white;
+text-decoration:none;
+border-radius:30px;
+}
+
+/* GRID */
+.grid{
+display:flex;
+gap:20px;
+justify-content:center;
+flex-wrap:wrap;
+padding:40px;
+}
+
+.card{
+width:300px;
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.card h3{
+padding:10px;
+}
+
+.card p{
+padding:0 10px;
+color:#777;
+}
+
+.card span{
+display:block;
+padding:10px;
+color:#d9a7b0;
+font-weight:bold;
+}
+
+/* DARK MODE */
+.dark{
+background:#121212;
+color:white;
+}
+
+.dark .navbar{
+background:#1e1e1e;
+}
+
+.dark .card{
+background:#1e1e1e;
+}
+
+/* SOCIAL */
+.socials i{
+font-size:25px;
+margin:10px;
+color:#d9a7b0;
+}
+
+/* LOADER */
+.loader{
+position:fixed;
+width:100%;
+height:100%;
+background:white;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:999;
+}
+
+.loader-circle{
+width:50px;
+height:50px;
+border:4px solid #d9a7b0;
+border-top:4px solid transparent;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{transform:rotate(360deg);}
 }
