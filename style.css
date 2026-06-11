@@ -1,158 +1,203 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Inter;
+/* ==========================================================================
+   1. ПЕРЕМЕННЫЕ И БАЗОВЫЕ НАСТРОЙКИ
+   ========================================================================== */
+:root {
+    --bg-color: #f8f9fa;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --text-main: #2d3748;
+    --text-muted: #718096;
+    --accent: #4a5568;
+    --border-radius: 16px;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-body{
-background:#faf7f5;
-color:#1a1a1a;
-transition:.4s;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-/* NAVBAR */
-.navbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 40px;
-background:white;
-position:fixed;
-width:100%;
-top:0;
-box-shadow:0 5px 20px rgba(0,0,0,0.05);
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    /* Мягкий градиент на фоне. При желании сюда можно поставить url('bg.jpg') */
+    background-image: linear-gradient(135deg, #e2e8f0 0%, #fff 100%);
+    min-height: 100vh;
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 20px;
 }
 
-.logo{
-font-weight:700;
-font-family:Playfair Display;
+/* Основной контейнер. Делает сайт универсальным (и для ноутов, и для мобильных) */
+.container {
+    max-width: 1000px;
+    width: 100%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
 }
 
-nav a{
-margin:0 10px;
-text-decoration:none;
-color:#333;
+/* ==========================================================================
+   2. СТИЛИ КАРТОЧЕК (Эффект Glassmorphism)
+   ========================================================================== */
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* HERO */
-.hero{
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:0 20px;
-background:linear-gradient(135deg,#fff,#f5e6e0);
+/* Легкий интерактив при наведении мыши на десктопах */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
 }
 
-.hero h1{
-font-size:50px;
-font-family:Playfair Display;
+/* Заголовки блоков */
+h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.hero-text{
-margin-top:15px;
-color:#555;
+h2 span {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 400;
 }
 
-/* BUTTON */
-.btn{
-display:inline-block;
-margin-top:20px;
-padding:12px 25px;
-background:#d9a7b0;
-color:white;
-text-decoration:none;
-border-radius:30px;
+/* ==========================================================================
+   3. БЛОК: СПОСОБЫ ОПЛАТЫ
+   ========================================================================== */
+.payment-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
 }
 
-/* GRID */
-.grid{
-display:flex;
-gap:20px;
-justify-content:center;
-flex-wrap:wrap;
-padding:40px;
+.payment-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    transition: all 0.2s;
 }
 
-.card{
-width:300px;
-background:white;
-border-radius:15px;
-overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-transition:.3s;
+.payment-item:hover {
+    background: #fff;
+    border-color: rgba(0, 0, 0, 0.05);
 }
 
-.card:hover{
-transform:translateY(-10px);
+.icon-check {
+    width: 18px;
+    height: 18px;
+    color: #48bb78; /* Зеленый цвет для галочек */
+    flex-shrink: 0;
 }
 
-.card img{
-width:100%;
-height:250px;
-object-fit:cover;
+/* ==========================================================================
+   4. БЛОК: КОНТАКТЫ И ИНФОРМАЦИЯ
+   ========================================================================== */
+.contact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.card h3{
-padding:10px;
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
 }
 
-.card p{
-padding:0 10px;
-color:#777;
+.contact-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--text-muted);
+    margin-top: 2px;
+    flex-shrink: 0;
 }
 
-.card span{
-display:block;
-padding:10px;
-color:#d9a7b0;
-font-weight:bold;
+.contact-info a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
 }
 
-/* DARK MODE */
-.dark{
-background:#121212;
-color:white;
+.contact-info a:hover {
+    color: #3182ce; /* Синий цвет при наведении на ссылки (телефон, адрес) */
 }
 
-.dark .navbar{
-background:#1e1e1e;
+.contact-info p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 2px;
 }
 
-.dark .card{
-background:#1e1e1e;
+/* Соцсети (Иконки WhatsApp и Instagram) */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
 }
 
-/* SOCIAL */
-.socials i{
-font-size:25px;
-margin:10px;
-color:#d9a7b0;
+.social-icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--text-muted);
+    transition: fill 0.2s;
 }
 
-/* LOADER */
-.loader{
-position:fixed;
-width:100%;
-height:100%;
-background:white;
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:999;
+.social-icon:hover {
+    fill: var(--text-main);
 }
 
-.loader-circle{
-width:50px;
-height:50px;
-border:4px solid #d9a7b0;
-border-top:4px solid transparent;
-border-radius:50%;
-animation:spin 1s linear infinite;
+/* ==========================================================================
+   5. ФУТЕР И АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ ЭКРАНОВ
+   ========================================================================== */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
 }
 
-@keyframes spin{
-100%{transform:rotate(360deg);}
+/* Адаптация сетки под совсем узкие экраны телефонов */
+@media (max-width: 400px) {
+    .payment-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .card {
+        padding: 25px 20px;
+    }
+    
+    h2 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
 }
