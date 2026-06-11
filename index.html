@@ -1,208 +1,292 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC Flowers Istanbul</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-main: #2d3748;
+            --text-muted: #718096;
+            --accent: #4a5568;
+            --border-radius: 16px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
 
-<title>MC Flowers Istanbul | Premium Flowers</title>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-<link rel="stylesheet" href="style.css">
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            /* Здесь можно задать красивый фоновый рисунок, как на макете */
+            background-image: linear-gradient(135deg, #e2e8f0 0%, #fff 100%);
+            min-height: 100vh;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px 20px;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h2 span {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* Стили для способов оплаты */
+        .payment-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        @media (max-width: 400px) {
+            .payment-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .payment-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .payment-item:hover {
+            background: #fff;
+            border-color: rgba(0,0,0,0.05);
+        }
+
+        .icon-check {
+            width: 18px;
+            height: 18px;
+            color: #48bb78;
+            flex-shrink: 0;
+        }
+
+        /* Стили для контактов */
+        .contact-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--text-muted);
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .contact-info a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .contact-info a:hover {
+            color: #3182ce;
+        }
+
+        .contact-info p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(0, 0, 0, 0.1);
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-muted);
+            transition: fill 0.2s;
+        }
+
+        .social-icon:hover {
+            fill: var(--text-main);
+        }
+
+        /* Футер */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 13px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+    </style>
 </head>
-
 <body>
 
-<div class="loader">
-<div class="loader-circle"></div>
-</div>
+    <div class="container">
+        
+        <section class="card">
+            <h2>Способы оплаты <span>Ödeme Yöntemleri</span></h2>
+            <ul class="payment-list">
+                <li class="payment-item">
+                    <svg class="icon-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    IBAN
+                </li>
+                <li class="payment-item">
+                    <svg class="icon-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    Kaspi.kz
+                </li>
+                <li class="payment-item">
+                    <svg class="icon-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    VakıfBank
+                </li>
+                <li class="payment-item">
+                    <svg class="icon-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    Sberbank
+                </li>
+                <li class="payment-item">
+                    <svg class="icon-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    Binance
+                </li>
+                <li class="payment-item">
+                    <svg class="icon-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    Western Union
+                </li>
+                <li class="payment-item">
+                    <svg class="icon-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    Золотая Корона
+                </li>
+                <li class="payment-item">
+                    <svg class="icon-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    T-Bank
+                </li>
+            </ul>
+        </section>
 
-<header class="navbar">
+        <section class="card">
+            <h2>Контакты <span>İletişim</span></h2>
+            <ul class="contact-list">
+                
+                <li class="contact-item">
+                    <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    <div class="contact-info">
+                        <a href="https://maps.google.com/?q=Cerrahpaşa,+Kocamustafapaşa+No67A,+İstanbul" target="_blank">Cerrahpaşa, Kocamustafapaşa No67A, İstanbul</a>
+                        <p>Нажмите, чтобы открыть карту</p>
+                    </div>
+                </li>
 
-<div class="logo">
-MC Flowers Istanbul
-</div>
+                <li class="contact-item">
+                    <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <div class="contact-info">
+                        <strong>10:00 - 21:00</strong>
+                        <p>Часы работы / Çalışma Saatleri</p>
+                    </div>
+                </li>
 
-<nav>
-<a href="#home">Главная</a>
-<a href="#about">О нас</a>
-<a href="#catalog">Букеты</a>
-<a href="#payment">Оплата</a>
-<a href="#contact">Контакты</a>
-</nav>
+                <li class="contact-item">
+                    <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg>
+                    <div class="contact-info">
+                        <strong>İstanbul geneli teslimat</strong>
+                        <p>Доставка по всему Стамбулу</p>
+                    </div>
+                </li>
 
-<div class="nav-buttons">
+                <li class="contact-item">
+                    <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    <div class="contact-info">
+                        <a href="tel:+905461882266">+90 (546) 188 22 60</a>
+                        <p>Позвонить нам</p>
+                    </div>
+                </li>
+            </ul>
 
-<button id="darkModeBtn">
-<i class="fa-solid fa-moon"></i>
-</button>
+            <div class="social-links">
+                <a href="https://wa.me/905461882260" target="_blank" title="WhatsApp">
+                    <svg class="social-icon" viewBox="0 0 24 24">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.446L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.852.002-2.632-1.023-5.105-2.887-6.974E-3-1.865-1.865-4.343-2.891-6.979-2.893-5.44 0-9.865 4.421-9.868 9.853-.001 1.704.469 3.371 1.36 4.865l-.98 3.578 3.665-.961zm10.583-5.26c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                    </svg>
+                </a>
+                <a href="https://instagram.com/" target="_blank" title="Instagram">
+                    <svg class="social-icon" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                    </svg>
+                </a>
+            </div>
 
-<a href="https://www.instagram.com/mc_flowers_ist" target="_blank" class="order-btn">
-Instagram
-</a>
+        </section>
 
-</div>
+    </div>
 
-</header>
-
-<section class="hero" id="home">
-
-<div class="hero-content">
-
-<p class="tag">
-Premium Flowers • İstanbul
-</p>
-
-<h1>
-Цветы, которые говорят за вас
-</h1>
-
-<p class="hero-text">
-Элегантные букеты в европейском стиле с доставкой по всему Стамбулу.
-Çiçeklerimiz İstanbul zarafeti ve modern estetiği bir araya getiriyor.
-</p>
-
-<div class="hero-buttons">
-
-<a href="https://wa.me/905461882260" target="_blank" class="primary-btn">
-WhatsApp
-</a>
-
-<a href="https://www.instagram.com/mc_flowers_ist" target="_blank" class="secondary-btn">
-Instagram
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="about-section" id="about">
-
-<h2>О нас | Hakkımızda</h2>
-
-<p>
-MC Flowers Istanbul — премиальная цветочная студия в Стамбуле.
-Мы создаём букеты в современном европейском стиле для особенных моментов.
-Доставка по всему Стамбулу каждый день.
-</p>
-
-</section>
-
-<section class="menu-section" id="catalog">
-
-<h2>Популярные букеты</h2>
-
-<div class="menu-grid">
-
-<div class="menu-card">
-<img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=800">
-<h3>Red Roses Premium</h3>
-<p>Классический букет красных роз.</p>
-<span>₺3500</span>
-</div>
-
-<div class="menu-card">
-<img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?w=800">
-<h3>White Peony Collection</h3>
-<p>Нежные пионы премиум класса.</p>
-<span>₺4200</span>
-</div>
-
-<div class="menu-card">
-<img src="https://images.unsplash.com/photo-1468327768560-75b778cbb551?w=800">
-<h3>Istanbul Luxury</h3>
-<p>Современная европейская композиция.</p>
-<span>₺5000</span>
-</div>
-
-</div>
-
-</section>
-
-<section class="gallery-section">
-
-<h2>Галерея</h2>
-
-<div class="gallery-grid">
-
-<img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=800">
-
-<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800">
-
-<img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?w=800">
-
-</div>
-
-</section>
-
-<section id="payment" class="about-section">
-
-<h2>Способы оплаты | Ödeme Yöntemleri</h2>
-
-<p>
-✓ IBAN<br>
-✓ Kaspi.kz<br>
-✓ VakıfBank<br>
-✓ Sberbank<br>
-✓ Binance<br>
-✓ Western Union<br>
-✓ Золотая Корона<br>
-✓ T-Bank
-</p>
-
-</section>
-
-<section class="contact-section" id="contact">
-
-<h2>Контакты | İletişim</h2>
-
-<p>
-<a href="https://maps.google.com/?q=Cerrahpaşa,Kocamustafapaşa+No67A+Istanbul" target="_blank">
-📍 Cerrahpaşa, Kocamustafapaşa No67A, İstanbul
-</a>
-</p>
-
-<p>
-🕒 10:00 - 21:00
-</p>
-
-<p>
-🚚 İstanbul geneli teslimat
-</p>
-
-<p>
-📞 +90 (546) 188 22 60
-</p>
-
-<div class="socials">
-
-<a href="https://www.instagram.com/mc_flowers_ist" target="_blank">
-<i class="fab fa-instagram"></i>
-</a>
-
-<a href="https://wa.me/905461882260" target="_blank">
-<i class="fab fa-whatsapp"></i>
-</a>
-
-</div>
-
-</section>
-
-<footer>
-
-<p>
-© 2026 MC Flowers Istanbul
-</p>
-
-</footer>
-
-<script src="script.js"></script>
+    <footer>
+        &copy; 2026 MC Flowers Istanbul
+    </footer>
 
 </body>
 </html>
