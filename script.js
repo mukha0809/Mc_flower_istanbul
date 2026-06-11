@@ -1,48 +1,43 @@
-window.addEventListener("load", () => {
-    const loader = document.querySelector(".loader");
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. ФУНКЦИЯ ОПРЕДЕЛЕНИЯ СТАТУСА РАБОТЫ (10:00 - 21:00)
+    function updateShopStatus() {
+        const statusElement = document.getElementById('shop-status');
+        if (!statusElement) return;
 
-    setTimeout(() => {
-        loader.style.opacity = "0";
-        setTimeout(() => loader.style.display = "none", 500);
-    }, 800);
-});
+        // Получаем текущее время в Стамбуле (или местное время пользователя)
+        const now = new Date();
+        const hours = now.getHours();
 
-/* DARK MODE */
-const darkModeBtn = document.getElementById("darkModeBtn");
+        // Время работы: с 10 до 21
+        const openHour = 10;
+        const closeHour = 21;
 
-darkModeBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-    localStorage.setItem("theme",
-        document.body.classList.contains("dark") ? "dark" : "light"
-    );
-});
-
-if(localStorage.getItem("theme")==="dark"){
-    document.body.classList.add("dark");
-}
-
-/* ANIMATION */
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
+        if (hours >= openHour && hours < closeHour) {
+            statusElement.innerHTML = ' • <span style="color: #48bb78; font-weight: 600;">Сейчас открыто / Açık</span>';
+        } else {
+            statusElement.innerHTML = ' • <span style="color: #e53e3e; font-weight: 600;">Сейчас закрыто / Kapalı</span>';
         }
-    });
-},{threshold:0.1});
+    }
 
-document.querySelectorAll(".card, .about, .gallery").forEach(el=>{
-    el.style.opacity="0";
-    el.style.transform="translateY(40px)";
-    el.style.transition="0.8s";
-    observer.observe(el);
-});
-
-/* SMOOTH SCROLL */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener("click",e=>{
-        e.preventDefault();
-        document.querySelector(a.getAttribute("href"))
-        .scrollIntoView({behavior:"smooth"});
+    // 2. КРАСИВАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ КАРТОЧЕК
+    const cards = document.querySelectorAll('.card');
+    
+    // Устанавливаем начальное состояние через JS, чтобы если у пользователя отключен JS, сайт все равно работал
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        
+        // Запускаем анимацию с небольшой задержкой для каждой карточки (эффект очереди)
+        setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 200); 
     });
+
+    // Запускаем проверку времени сразу при загрузке
+    updateShopStatus();
+    
+    // Обновляем статус каждую минуту на случай, если пользователь долго сидит на странице
+    setInterval(updateShopStatus, 60000);
 });
